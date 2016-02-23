@@ -38,7 +38,8 @@ public class DateUtil {
         long myTime = (d.getTime() / 1000) + 6 * 24 * 60 * 60;
         d.setTime(myTime * 1000);
         mdate = format.format(d);
-        ll.info("6天后是"+mdate+" "+dayForWeek(d));
+        ll.info("6天后是" + mdate + " " + dayForWeek(d));
+        mdate=mdate.replaceAll("-","");
         return mdate;
     }
     public static String get6days(Date d){
@@ -48,6 +49,7 @@ public class DateUtil {
         d.setTime(myTime * 1000);
         mdate = format.format(d);
         ll.info("6天后是"+mdate+" "+dayForWeek(d));
+        mdate=mdate.replaceAll("-", "");
         return mdate;
     }
     //获取星期几 注意周日 至 周六是0-6

@@ -1,5 +1,6 @@
 package org.cc.drive.school.haidian.service;
 
+import org.apache.http.client.CookieStore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -13,8 +14,8 @@ public class CookiesServiceImplTest extends BaseService {
     private CookiesService cookiesServiceImpl;
     @Test
     public void testgetCookie() throws IOException {
-        String logon = cookiesServiceImpl.getLoginCookies();
-        ll.info("login cookie:" + logon);
+        CookieStore cs = cookiesServiceImpl.getLoginCookies();
+        ll.info("login cookie:" + cs.toString());
     }
 
 }

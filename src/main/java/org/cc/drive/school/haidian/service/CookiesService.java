@@ -2,6 +2,7 @@ package org.cc.drive.school.haidian.service;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.CookieStore;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.cookie.Cookie;
@@ -24,5 +25,5 @@ import java.util.List;
 @Service
 public interface CookiesService {
 
-    public  String getLoginCookies()  throws IOException ;
+    public CookieStore getLoginCookies()  throws IOException ;
 }

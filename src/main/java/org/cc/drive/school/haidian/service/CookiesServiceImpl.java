@@ -43,7 +43,7 @@ public class CookiesServiceImpl implements  CookiesService{
     @Autowired
     private YZMService yzmService;
 
-    public  String  getLoginCookies() throws IOException {
+    public  CookieStore  getLoginCookies() throws IOException {
         String url="http://haijia.bjxueche.net/Login.aspx";
         HttpClient httpclient = new DefaultHttpClient();
         HttpGet httpget = new HttpGet(url);
@@ -68,22 +68,13 @@ public class CookiesServiceImpl implements  CookiesService{
 //        HttpUtil.showHeaderes(h, "get index headers");
 
         String imgCode=yzmService.parseYZM(httpget, httpclient);
-
-
         map.put("txtIMGCode", imgCode);
 
         boolean loginTag=false;
-        int count=0;
-        CookieStore cs=null;
-        do{
-
-            cs= loginAction(httpclient, map, h);
-            loginTag=validLoginStatus(cs);
-            ll.info(" ××××××××××××××××××××××××××× "+count+"次");
-            count++;
-        }while (!loginTag&&count<4);
+        CookieStore cs=  loginAction(httpclient, map, h);
         httpget.releaseConnection();
-        return "ok";
+        loginTag=validLoginStatus(cs);
+        return cs;
     }
     private boolean validLoginStatus(CookieStore logincookies){
         //打印
@@ -103,7 +94,7 @@ public class CookiesServiceImpl implements  CookiesService{
         try {
             en = new GzipDecompressingEntity(en);
             String res= EntityUtils.toString(en, "UTF-8");
-            ll.debug("login html :"+ res);
+            ll.debug("login html :" + res);
 
             if(StringUtils.isNotBlank(res)){
                 Document doc= HtmlParse.getDocByStr(res);

@@ -11,6 +11,16 @@ public class BookCarBean {
 
     private String carNum;
 
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public BookCarBean(){}
 
     public String getDate() {

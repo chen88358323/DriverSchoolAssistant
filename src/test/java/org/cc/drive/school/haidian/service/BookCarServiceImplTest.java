@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Created by chichen.cc on 2016/2/22.
  */
-public class MainTest extends BaseService {
+public class BookCarServiceImplTest extends BaseService {
     @Autowired
     private CarService carService;
     @Autowired
@@ -22,7 +22,7 @@ public class MainTest extends BaseService {
     public void book() throws IOException {
         CookieStore cs=cookiesServiceImpl.getLoginCookies();
         boolean loginTag= HttpUtil.queryCookies(cs.getCookies(), "LoginOn");
-        if(loginTag){
+        if(loginTag){//logon
 
         }
         ll.info("json:");

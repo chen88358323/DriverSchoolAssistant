@@ -2,11 +2,15 @@ package org.cc.drive.school.haidian.util;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
+import org.apache.http.client.CookieStore;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.protocol.ClientContext;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +29,7 @@ public class PostUtil {
      * @param  json 提交数据
      * @param usercookie  对应用户cookie
      * */
-    public static String postJsonData(String url,String json,String usercookie){
+    public static String postJsonData(String url,String json,CookieStore usercookie){
         String res=null;
 
         BasicHttpParams httpParams = new BasicHttpParams();
@@ -39,11 +43,14 @@ public class PostUtil {
             post.setEntity(entity);
             post.setHeader("Accept", "application/json");
             post.setHeader("Content-type", "application/json");
-
+            //创建一个本地上下文信息
+            HttpContext localContext = new BasicHttpContext();
+            //在本地上下问中绑定一个本地存储
+            localContext.setAttribute(ClientContext.COOKIE_STORE, usercookie);
             long startTime = System.currentTimeMillis();
-            post.setHeader("Cookie",usercookie);
+//            post.setHeader("Cookie",usercookie);
             //设置编码
-            HttpResponse response=client.execute(post);
+            HttpResponse response=client.execute(post, localContext);
             long endTime = System.currentTimeMillis();
             int statusCode = response.getStatusLine().getStatusCode();
             ll.info("statusCode:" + statusCode);

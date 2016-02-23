@@ -6,14 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.io.IOException;
 
 /**
- * Created by chichen.cc on 2016/2/22.
+ * Created by chichen.cc on 2016/2/23.
  */
-public class CookiesServiceImplTest extends BaseService {
+public class YZMServiceImplTest extends BaseService {
     @Autowired
-    private CookiesService cookiesServiceImpl;
+    private YZMService yzmService;
     @Test
     public void testgetCookie() throws IOException {
-        String logon = cookiesServiceImpl.getLoginCookies();
+        String logon = yzmService.parseYZM();
         ll.info("login cookie:" + logon);
     }
 

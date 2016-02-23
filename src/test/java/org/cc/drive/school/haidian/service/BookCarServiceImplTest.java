@@ -12,18 +12,16 @@ import java.io.IOException;
  */
 public class BookCarServiceImplTest extends BaseService {
     @Autowired
-    private CarService carService;
+    private BookServiceImpl bookServiceImpl;
     @Autowired
     private CookiesService cookiesServiceImpl;
-    @Autowired
-    private YZMService yzmService;
 
     @Test
     public void book() throws IOException {
         CookieStore cs=cookiesServiceImpl.getLoginCookies();
         boolean loginTag= HttpUtil.queryCookies(cs.getCookies(), "LoginOn");
         if(loginTag){//logon
-
+            bookServiceImpl.bookcar(cs);
         }
         ll.info("json:");
     }

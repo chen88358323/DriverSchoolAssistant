@@ -1,4 +1,4 @@
-package org.cc.drive.school.haidian.util;
+package org.cc.drive.school.haidian.util.orc.asprise;
 
 import com.asprise.ocr.Ocr;
 import org.slf4j.Logger;

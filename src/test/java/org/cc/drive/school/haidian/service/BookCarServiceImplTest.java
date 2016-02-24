@@ -18,11 +18,26 @@ public class BookCarServiceImplTest extends BaseService {
 
     @Test
     public void book() throws IOException {
+        boolean loginTag =false;
         CookieStore cs=cookiesServiceImpl.getLoginCookies();
-        boolean loginTag= HttpUtil.queryCookies(cs.getCookies(), "LoginOn");
-        if(loginTag){//logon
-            bookServiceImpl.bookcar(cs);
-        }
+        int count=0;
+        do{//logon
+            count++;
+            loginTag= HttpUtil.queryCookies(cs.getCookies(), "LoginOn");
+
+            if(loginTag) {
+                ll.info("the "+count+" is success");
+                bookServiceImpl.bookcar(cs);
+            }
+            ll.info("the "+count+" is fail!!!");
+
+            try {
+                Thread.sleep(900);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        }while(!loginTag);
         ll.info("json:");
     }
 

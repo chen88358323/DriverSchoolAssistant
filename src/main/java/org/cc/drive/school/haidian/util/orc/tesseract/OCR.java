@@ -1,19 +1,21 @@
 package org.cc.drive.school.haidian.util.orc.tesseract;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.Properties;
 
 public class OCR {
 	protected transient final Logger logger = LoggerFactory.getLogger(this.getClass());
 	private final String LANG_OPTION = "-l";
 	private final String EOL = System.getProperty("line.separator");
-	private String tessPath = new File("tesseract").getAbsolutePath();
+//	private String tessPath = new File("tesseract").getAbsolutePath();
 
 	public String recognizeText(File imageFile, String imageFormat)
 			throws Exception {
@@ -23,7 +25,7 @@ public class OCR {
 		StringBuffer strB = new StringBuffer();
 
 		List<String> cmd = new ArrayList<String>();
-		cmd.add(tessPath + "\\tesseract");
+		cmd.add(getTesseractPath());
 		cmd.add("");
 		cmd.add(outputFile.getName());
 		cmd.add(LANG_OPTION);
@@ -74,7 +76,19 @@ public class OCR {
 		}
 
 		new File(outputFile.getAbsolutePath() + ".txt").delete();
-		logger.info("ͼ��ʶ����:{}", strB);
+		logger.info("验证码:{}", strB);
 		return strB.toString();
+	}
+
+	private String getTesseractPath(){
+		Properties prop = System.getProperties();
+		String os = prop.getProperty("os.name").toLowerCase();
+		String tessPath=null;
+		if(os.startsWith("win")){
+			tessPath="D:\\CODE\\Demot\\tesseract\\tesseract.exe";
+		}else{
+			tessPath="/home/admin/xxx";
+		}
+		return tessPath;
 	}
 }

@@ -2,7 +2,7 @@ package org.cc.drive.school.haidian.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -108,7 +108,9 @@ public class JsonUtil {
             Object obj=resmap.get("d");
 
             if(obj!=null){
-                String j=obj.toString().replace("_1","");
+                String j=obj.toString();
+                j=j.substring(0,j.length()-2);
+//                String j=obj.toString().replace("_1","");
                 ll.info(obj.toString());
                 List<Cars> dicArray=new ArrayList<Cars>(JSONArray.parseArray(j, Cars.class));
                 if(dicArray!=null &&dicArray.size()>0){

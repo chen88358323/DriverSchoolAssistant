@@ -1,8 +1,13 @@
 package org.cc.drive.school.haidian.util.orc.tesseract;
 
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Toolkit;
+import com.sun.media.imageio.plugins.tiff.TIFFImageWriteParam;
+
+import javax.imageio.*;
+import javax.imageio.metadata.IIOMetadata;
+import javax.imageio.stream.ImageInputStream;
+import javax.imageio.stream.ImageOutputStream;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.awt.image.ImageProducer;
@@ -11,17 +16,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.Locale;
-
-import javax.imageio.IIOImage;
-import javax.imageio.ImageIO;
-import javax.imageio.ImageReader;
-import javax.imageio.ImageWriteParam;
-import javax.imageio.ImageWriter;
-import javax.imageio.metadata.IIOMetadata;
-import javax.imageio.stream.ImageInputStream;
-import javax.imageio.stream.ImageOutputStream;
-import javax.swing.JOptionPane;
-import com.sun.media.imageio.plugins.tiff.TIFFImageWriteParam;
 
 public class ImageIOHelper {
 

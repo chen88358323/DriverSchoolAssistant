@@ -1,8 +1,9 @@
 package org.cc.drive.school.haidian.util.orc.tesseract;
-		import java.awt.image.BufferedImage;
-		import java.io.File;
-		import java.io.FileInputStream;
-		import java.io.FileOutputStream;
+
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 
 public class ImageRead {
 

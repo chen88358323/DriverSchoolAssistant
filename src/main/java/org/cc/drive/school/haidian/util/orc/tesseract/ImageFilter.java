@@ -3,15 +3,10 @@ package org.cc.drive.school.haidian.util.orc.tesseract;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.color.ColorSpace;
 import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
-import java.awt.image.BufferedImage;
-import java.awt.image.ColorConvertOp;
-import java.awt.image.ColorModel;
-import java.awt.image.MemoryImageSource;
-import java.awt.image.PixelGrabber;
+import java.awt.image.*;
 
 /**
  *
@@ -69,7 +64,7 @@ public class ImageFilter {
 			pixels[i] = alpha << 24 | red << 16 | green << 8 | blue;
 		}
 		// 将数组中的象素产生一个图像
-		return net.wealthgod.client.center.ocr.ImageIOHelper.imageProducerToBufferedImage(new MemoryImageSource(iw, ih, pixels, 0, iw));
+		return ImageIOHelper.imageProducerToBufferedImage(new MemoryImageSource(iw, ih, pixels, 0, iw));
 	}
 
 	/** 提升清晰度,进行锐化 */
@@ -123,7 +118,7 @@ public class ImageFilter {
 		}
 
 		// 将数组中的象素产生一个图像
-		return net.wealthgod.client.center.ocr.ImageIOHelper.imageProducerToBufferedImage(new MemoryImageSource(iw, ih, tempPixels, 0, iw));
+		return ImageIOHelper.imageProducerToBufferedImage(new MemoryImageSource(iw, ih, tempPixels, 0, iw));
 	}
 
 	/** 中值滤波 */
@@ -232,7 +227,7 @@ public class ImageFilter {
 		}
 
 		// 将数组中的象素产生一个图像
-		return net.wealthgod.client.center.ocr.ImageIOHelper.imageProducerToBufferedImage(new MemoryImageSource(iw, ih, pixels, 0, iw));
+		return ImageIOHelper.imageProducerToBufferedImage(new MemoryImageSource(iw, ih, pixels, 0, iw));
 	}
 
 	/** 线性灰度变换 */
@@ -269,7 +264,7 @@ public class ImageFilter {
 
 		// 将数组中的象素产生一个图像
 
-		return net.wealthgod.client.center.ocr.ImageIOHelper.imageProducerToBufferedImage(new MemoryImageSource(iw, ih, pixels, 0, iw));
+		return ImageIOHelper.imageProducerToBufferedImage(new MemoryImageSource(iw, ih, pixels, 0, iw));
 	}
 
 	/** 转换为黑白灰度图 */

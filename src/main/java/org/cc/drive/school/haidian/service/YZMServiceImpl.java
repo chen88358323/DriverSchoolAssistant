@@ -8,7 +8,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.client.AbstractHttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.cc.drive.school.haidian.util.AspriseUtil;
+import org.cc.drive.school.haidian.util.orc.asprise.AspriseUtil;
 import org.cc.drive.school.haidian.util.FileUtil;
 import org.cc.drive.school.haidian.util.HttpUtil;
 import org.slf4j.Logger;

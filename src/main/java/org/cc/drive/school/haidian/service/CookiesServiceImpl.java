@@ -1,6 +1,6 @@
 package org.cc.drive.school.haidian.service;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -13,12 +13,10 @@ import org.apache.http.client.entity.GzipDecompressingEntity;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.client.AbstractHttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-import org.cc.drive.school.haidian.util.AspriseUtil;
 import org.cc.drive.school.haidian.util.HtmlParse;
 import org.cc.drive.school.haidian.util.HttpUtil;
 import org.jsoup.nodes.Document;
@@ -28,7 +26,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

@@ -33,10 +33,12 @@ public class BookServiceImpl implements BookService {
     private static int cpus=Runtime.getRuntime().availableProcessors();
 
     public String bookcar(CookieStore cs ,BookCarBean bcb) {
-        String json =carService.queryCars(cs , bcb);
-        List<String> cars=carService.getCarList(json);
         if(bcb==null)
             bcb=getDefaultBean();
+
+        String json =carService.queryCars(cs , bcb);
+        List<String> cars=carService.getCarList(json);
+
 
         if( taskExecutor!=null){
             taskExecutor.execute(new ProducerTask(cars,bcb));
@@ -71,13 +73,11 @@ public class BookServiceImpl implements BookService {
         }
         private List<String> carlist;
         private BookCarBean bcb;
-        private String date;
-        private String tl;
         public void run() {
             //拼接提交的json信息
             if(carlist!=null&&carlist.size()>0){
                 for (int i = 0; i < carlist.size(); i++) {
-                    String msg = "{\"yyrq\":\""+date+"\",\"xnsd\":\""+tl+"\",\"cnbh\":\""+carlist.get(i)+"\",\"imgCode\":\"\",\"KMID\":\"2\"}";
+                    String msg = "{\"yyrq\":\""+bcb.getDate()+"\",\"xnsd\":\""+bcb.getTimeInterval()+"\",\"cnbh\":\""+carlist.get(i)+"\",\"imgCode\":\"\",\"KMID\":\"2\"}";
                     ll.info("the "+i+msg);
                     buffer.write(msg);
                 }

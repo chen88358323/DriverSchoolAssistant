@@ -1,6 +1,5 @@
 package org.cc.drive.school.haidian.util.orc.asprise;
 
-import com.asprise.ocr.Ocr;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,13 +17,13 @@ public class AspriseUtil {
 
     public static String recognize(String file){
         String res=null;
-        Ocr.setUp(); // one time setup
-        Ocr ocr = new Ocr(); // create a new OCR engine
-        ocr.startEngine("eng", Ocr.SPEED_FASTEST); // English
-        res = ocr.recognize(new File[] {new File(file)},
-                Ocr.RECOGNIZE_TYPE_ALL, Ocr.OUTPUT_FORMAT_PLAINTEXT); // PLAINTEXT | XML | PDF | RTF
-        ll.info("img recognize Result: " + res);
-        ocr.stopEngine();
+//        Ocr.setUp(); // one time setup
+//        Ocr ocr = new Ocr(); // create a new OCR engine
+//        ocr.startEngine("eng", Ocr.SPEED_FASTEST); // English
+//        res = ocr.recognize(new File[] {new File(file)},
+//                Ocr.RECOGNIZE_TYPE_ALL, Ocr.OUTPUT_FORMAT_PLAINTEXT); // PLAINTEXT | XML | PDF | RTF
+//        ll.info("img recognize Result: " + res);
+//        ocr.stopEngine();
         return res;
     }
 }

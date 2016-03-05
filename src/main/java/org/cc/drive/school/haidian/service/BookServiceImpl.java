@@ -51,11 +51,21 @@ public class BookServiceImpl implements BookService {
     public String bookcar(CookieStore cs  ) {
         return bookcar(cs,null);
     }
-
+    public String bookcar(CookieStore cs ,String days,String inerval){
+        BookCarBean  bcb=getDefaultBean(days,inerval);
+        return bookcar(cs,bcb);
+    }
     private BookCarBean getDefaultBean(){
         BookCarBean bcb=new BookCarBean();
         bcb.setDate(DateUtil.get6days());
-        bcb.setTimeInterval("15");
+        bcb.setTimeInterval("1315");
+        bcb.setName("cc");
+        return bcb;
+    }
+    private BookCarBean getDefaultBean(String date,String inerval){
+        BookCarBean bcb=new BookCarBean();
+        bcb.setDate(date);
+        bcb.setTimeInterval(inerval);
         bcb.setName("cc");
         return bcb;
     }
@@ -65,12 +75,13 @@ public class BookServiceImpl implements BookService {
         private static final Logger ll = LoggerFactory.getLogger(ProducerTask.class);
         /******
          * datestr 为时间 默认为当前运行时间+6天
-         * timeline 为约车时间段 812 或者15
+         * timeline 为约车时间段
+         * 710 1112   1315   1518  1820
          * **/
         ProducerTask(List<String> carlists,BookCarBean b){
             carlist=carlists;
             bcb=b;
-        }//test
+        }//
         private List<String> carlist;
         private BookCarBean bcb;
         public void run() {

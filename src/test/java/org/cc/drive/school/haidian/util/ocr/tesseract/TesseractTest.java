@@ -1,6 +1,6 @@
 package org.cc.drive.school.haidian.util.ocr.tesseract;
 
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.cc.drive.school.haidian.util.orc.tesseract.ImageRead;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,5 +1,6 @@
 package org.cc.drive.school.haidian.service;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -11,14 +12,14 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.cc.drive.school.haidian.util.orc.asprise.AspriseUtil;
 import org.cc.drive.school.haidian.util.FileUtil;
 import org.cc.drive.school.haidian.util.HttpUtil;
+import org.cc.drive.school.haidian.util.orc.tesseract.ImageRead;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.net.URI;
 import java.util.List;
 
@@ -110,7 +111,8 @@ public class YZMServiceImpl implements YZMService {
             e.printStackTrace();
         }
 
-        String imgCode=AspriseUtil.recognize(f);
+//        String imgCode=AspriseUtil.recognize(f);
+        String imgCode=getImgCodeByTesseract(f);
         imgCode=imgCode.replaceAll(" ","");
         ll.info("yzm:" + imgCode);
 
@@ -121,5 +123,25 @@ public class YZMServiceImpl implements YZMService {
         ll.info("***********************get img end*************************");
 
         return imgCode;
+    }
+
+    private String getImgCodeByTesseract(String fn){
+        String res=null;
+        File f=new File(fn);
+        try {
+            InputStream instream = new FileInputStream(f);
+            BufferedImage bi = ImageIO.read(instream);
+            instream.close();
+            res = ImageRead.read(bi, 0);
+            if(StringUtils.isNotBlank(res)){
+                res=res.replaceAll(" ","");
+            }
+            ll.info(res + ":====" +  "   ");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            return res;
+        }
+
     }
 }

@@ -9,4 +9,5 @@ import org.cc.drive.school.haidian.bean.BookCarBean;
 public interface BookService {
     public String bookcar(CookieStore cs);
     public String bookcar(CookieStore cs ,BookCarBean bcb);
+    public String bookcar(CookieStore cs ,String days,String inerval);
 }

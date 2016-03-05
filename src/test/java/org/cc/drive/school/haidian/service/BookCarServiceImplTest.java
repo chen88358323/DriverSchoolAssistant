@@ -26,8 +26,9 @@ public class BookCarServiceImplTest extends BaseService {
             loginTag= HttpUtil.queryCookies(cs.getCookies(), "LoginOn");
 
             if(loginTag) {
-                ll.info("the "+count+" is success");
-                bookServiceImpl.bookcar(cs);
+                ll.info("the " + count + " is success");
+//                bookServiceImpl.bookcar(cs);
+                bookServiceImpl.bookcar(cs,"3","1315");
             }
             ll.info("the "+count+" is fail!!!");
 
